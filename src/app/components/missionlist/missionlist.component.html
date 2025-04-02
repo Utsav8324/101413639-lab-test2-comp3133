@@ -1,0 +1,18 @@
+<mat-card *ngFor="let launch of launches" style="margin-bottom: 20px; border-radius: 12px; background-color: #f5f5f5;">
+  <mat-card-header>
+    <mat-card-title>{{ launch.mission_name }} ({{ launch.launch_year }})</mat-card-title>
+  </mat-card-header>
+
+  <img mat-card-image [src]="launch.links.mission_patch_small" alt="patch" style="width: 150px; margin: auto; display: block;">
+
+  <mat-card-content>
+    <p>{{ launch.details || 'No details available.' }}</p>
+    <p><strong>Rocket:</strong> {{ launch.rocket.rocket_name }} - {{ launch.rocket.rocket_type }}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <a mat-raised-button color="primary" [routerLink]="['/mission', launch.flight_number]">View Details</a>
+    <a mat-raised-button color="accent" [href]="launch.links.article_link" target="_blank">Article</a>
+    <a mat-raised-button color="warn" [href]="launch.links.video_link" target="_blank">Video</a>
+  </mat-card-actions>
+</mat-card>
