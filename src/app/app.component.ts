@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MissionfilterComponent } from './components/missionfilter/missionfilter.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  selectedYear: string = '';
+  constructor(private router: Router) {}
 
   onYearSelected(year: string) {
-    this.selectedYear = year;
+    this.router.navigate(['/'], { queryParams: { year } });
   }
 }
